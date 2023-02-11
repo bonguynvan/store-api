@@ -1,13 +1,13 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const productSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: [true, "title must be provided"],
+    required: [true, 'title must be provided'],
   },
   price: {
     type: Number,
-    required: [true, "price must be provided"],
+    required: [true, 'price must be provided'],
   },
   featured: {
     type: Boolean,
@@ -23,10 +23,10 @@ const productSchema = new mongoose.Schema({
   },
   owner: {
     type: String,
-    default: "Anonymous",
+    default: 'Anonymous',
   },
-});
+})
 
-const products = mongoose.model("products", productSchema);
+const Product = mongoose.model('products', productSchema)
 
-module.exports = products;
+module.exports = Product
