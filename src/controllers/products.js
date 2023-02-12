@@ -1,11 +1,12 @@
 const Product = require('../models/products')
-
-const getAllProductsStatic = async (req, res, next) => {
+const asyncWrapper = require('../middlewares/async')
+const { createCustomError } = require('../error/CustomError')
+const getAllProductsStatic = asyncWrapper(async (req, res, next) => {
   const products = await Product.find({})
   res.status(200).json({ products, nbHits: products.length, msg: 'success' })
-}
+})
 
-const getAllProducts = async (req, res, next) => {
+const getAllProducts = asyncWrapper(async (req, res, next) => {
   const { featured, title, owner, sort, fields, numericFilters } = req.query
   const queryObject = {}
   if (featured) {
@@ -60,9 +61,41 @@ const getAllProducts = async (req, res, next) => {
 
   const results = await products
   res.status(200).json({ nbHits: results.length, results, msg: 'success' })
-}
+})
+
+const createProduct = asyncWrapper(async (req, res, next) => {
+  const product = await Product.create(req.body)
+  res.status(200).json({ msg: 'Success', product })
+})
+const getSingleProduct = asyncWrapper(async (req, res, next) => {
+  const product = await Product.findOne({ _id: req.params.id })
+  if (!product) {
+    return next(createCustomError(`Not found the task with id ${req.params.id}`, 400))
+  }
+  res.status(200).json({ msg: 'Success', product })
+})
+const updateProduct = asyncWrapper(async (req, res, next) => {
+  const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+    runValidators: true
+  })
+  if(!product) {
+    return next(createCustomError(`Not found the task with id ${req.params.id}`, 400))
+  }
+  res.status(200).json({ msg: 'Success'})
+})
+const deleteProduct = asyncWrapper(async (req, res, next) => {
+  let product = await Product.findByIdAndDelete(req.params.id)
+  if(!product) {
+    return next(createCustomError(`Not found the task with id ${req.params.id}`, 400))
+  }
+  res.status(200).json({ msg: 'Success', product })
+})
 
 module.exports = {
   getAllProducts,
   getAllProductsStatic,
+  createProduct,
+  getSingleProduct,
+  updateProduct,
+  deleteProduct,
 }
