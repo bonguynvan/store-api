@@ -1,5 +1,6 @@
+const { StatusCodes } = require('http-status-codes')
 const notFound = (req, res) => {
-    res.status(404).json({msg: 'Not found for this route'})
+  res.status(StatusCodes.NOT_FOUND).json({ msg: 'Not found for this route' })
 }
 
 module.exports = notFound

@@ -1,6 +1,6 @@
 const Product = require('../models/products')
 const asyncWrapper = require('../middlewares/async')
-const { createCustomError } = require('../error/CustomError')
+const { NotFound, CustomError } = require('../error')
 const getAllProductsStatic = asyncWrapper(async (req, res, next) => {
   const products = await Product.find({})
   res.status(200).json({ products, nbHits: products.length, msg: 'success' })
@@ -70,23 +70,23 @@ const createProduct = asyncWrapper(async (req, res, next) => {
 const getSingleProduct = asyncWrapper(async (req, res, next) => {
   const product = await Product.findOne({ _id: req.params.id })
   if (!product) {
-    return next(createCustomError(`Not found the task with id ${req.params.id}`, 400))
+    return next(new CustomError(`Not found the task with id ${req.params.id}`))
   }
   res.status(200).json({ msg: 'Success', product })
 })
 const updateProduct = asyncWrapper(async (req, res, next) => {
   const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
-    runValidators: true
+    runValidators: true,
   })
-  if(!product) {
-    return next(createCustomError(`Not found the task with id ${req.params.id}`, 400))
+  if (!product) {
+    throw new NotFound(`Not found the task with id ${req.params.id}`)
   }
-  res.status(200).json({ msg: 'Success'})
+  res.status(200).json({ msg: 'Success' })
 })
 const deleteProduct = asyncWrapper(async (req, res, next) => {
   let product = await Product.findByIdAndDelete(req.params.id)
-  if(!product) {
-    return next(createCustomError(`Not found the task with id ${req.params.id}`, 400))
+  if (!product) {
+    throw new NotFound(`Not found the task with id ${req.params.id}`)
   }
   res.status(200).json({ msg: 'Success', product })
 })
