@@ -1,0 +1,131 @@
+[
+    {
+      "title": "accent chair",
+      "price": 25,
+      "owner": "marcos",
+      "rating": 4
+    },
+    {
+      "title": "albany sectional",
+      "price": 109,
+      "owner": "liddy",
+      "rating": 5
+    },
+    {
+      "title": "albany table",
+      "price": 309,
+      "owner": "liddy",
+      "rating": 4.9
+    },
+    {
+      "title": "armchair",
+      "price": 125,
+      "owner": "marcos",
+      "rating": 4.8
+    },
+    {
+      "title": "bar stool",
+      "price": 40,
+      "owner": "liddy",
+      "rating": 4.6
+    },
+    {
+      "title": "dining table",
+      "price": 42,
+      "owner": "ikea",
+      "rating": 4.55
+    },
+    {
+      "title": "emperor bed",
+      "price": 23,
+      "owner": "ikea"
+    },
+    {
+      "title": "entertainment center",
+      "price": 59,
+      "featured": true,
+      "owner": "caressa"
+    },
+    {
+      "title": "high-back bench",
+      "price": 39,
+      "featured": true,
+      "owner": "ikea"
+    },
+  
+    {
+      "title": "leather sofa",
+      "price": 99,
+      "owner": "caressa"
+    },
+    {
+      "title": "modern bookshelf",
+      "price": 31,
+      "featured": true,
+      "owner": "caressa"
+    },
+    {
+      "title": "modern poster",
+      "price": 30,
+      "owner": "liddy"
+    },
+    {
+      "title": "shelf",
+      "price": 30,
+      "owner": "ikea"
+    },
+    {
+      "title": "simple chair",
+      "price": 109,
+      "owner": "liddy"
+    },
+    {
+      "title": "sofa set",
+      "price": 129,
+      "owner": "marcos"
+    },
+    {
+      "title": "suede armchair",
+      "price": 15,
+      "owner": "caressa"
+    },
+    {
+      "title": "utopia sofa",
+      "price": 79,
+      "featured": true,
+      "owner": "liddy"
+    },
+    {
+      "title": "vase table",
+      "price": 120,
+      "featured": true,
+      "owner": "marcos"
+    },
+    {
+      "title": "wooden bed",
+      "price": 25,
+      "owner": "ikea"
+    },
+    {
+      "title": "wooden desk",
+      "price": 15,
+      "owner": "ikea"
+    },
+    {
+      "title": "wooden desk",
+      "price": 40,
+      "owner": "ikea"
+    },
+    {
+      "title": "wooden table",
+      "price": 23,
+      "featured": true,
+      "owner": "caressa"
+    },
+    {
+      "title": "a first wooden table",
+      "price": 23,
+      "featured": true,
+      "owner": "caressa"
+    }
+  ]
